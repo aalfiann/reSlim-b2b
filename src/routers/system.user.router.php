@@ -60,9 +60,9 @@ use \classes\SimpleCache as SimpleCache;
         $username = $request->getAttribute('username');
         $body = $response->getBody();
         if (classes\system\Util::isUserRegistered($this->db,$username)){
-            $body->write('{"status":"success","code":"RS501","result": {"username": "'.$username.'","registered":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
+            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","Registered":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
         } else {
-            $body->write('{"status":"error","code":"RS601","result": {"username": "'.$username.'","registered":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
+            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","Registered":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
         }
         return classes\Cors::modify($response,$body,200);
     });
@@ -72,9 +72,9 @@ use \classes\SimpleCache as SimpleCache;
         $username = $request->getAttribute('username');
         $body = $response->getBody();
         if (classes\system\Util::isMainUserExist($this->db,$username)){
-            $body->write('{"status":"success","code":"RS501","result": {"username": "'.$username.'","exists":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
+            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","Exists":true},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
         } else {
-            $body->write('{"status":"error","code":"RS601","result": {"username": "'.$username.'","exists":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
+            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","Exists":false},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
         }
         return classes\Cors::modify($response,$body,200);
     });
@@ -86,9 +86,9 @@ use \classes\SimpleCache as SimpleCache;
         $branch = $user->getBranchID($username);
         $body = $response->getBody();
         if (!empty($branch)){
-            $body->write('{"status":"success","code":"RS501","result": {"username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
+            $body->write('{"status":"success","code":"RS501","result": {"Username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS501').'"}');
         } else {
-            $body->write('{"status":"error","code":"RS601","result": {"username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
+            $body->write('{"status":"error","code":"RS601","result": {"Username": "'.$username.'","BranchID": "'.$branch.'"},"message":"'.classes\CustomHandlers::getreSlimMessage('RS601').'"}');
         }
         
         return classes\Cors::modify($response,$body,200);
