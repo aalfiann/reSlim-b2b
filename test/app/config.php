@@ -2,7 +2,7 @@
             //Configurations
             $config['title'] = 'reSlim B2B'; //Your title website
             $config['keyword'] = 'Backend, Rest, API, UI'; //Your keyword website
-            $config['description'] = 'Make your project reSlim with use restful api. reSlim is based on Slim3'; //Your description website
+            $config['description'] = 'Make your project reSlim with use restful api. This is reSlim with extended feature for b2b.'; //Your description website
             $config['email'] = 'youremail@gmail.com'; //Your default email
             $config['basepath'] = 'http://localhost:1337/reSlim-b2b/test/app'; //Your folder website
             $config['homepath'] = 'http://localhost:1337/reSlim-b2b/test/app'; //Your folder frontend website
