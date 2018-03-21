@@ -70,7 +70,7 @@
         var $seosite;
 
         // Set language
-        var $setlang = 'id';
+        var $setlang = 'en';
         var $datalang;
 
         // Set Run Cache Files
