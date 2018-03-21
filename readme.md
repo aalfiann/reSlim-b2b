@@ -58,12 +58,12 @@ Folder System
 * resources
     * database
         * event_delete_all_expired_auth_scheduler.sql (An expired token will auto deletion in 7 Days after expired date)
-        * reSlim-b2b.sql (Structure database in reSlim to work with default example)
+        * reSlim-b2b.sql (Structure database in reSlim-b2b to work with default test)
     * postman
         * reSlim Main.postman_collection.json (Is the file to run main api with PostMan)
         * reSlim System.postman_collection.json (Is the file to run b2b system api with PostMan)
     * template
-        * readme.md
+        * readme.md (You can get original html template here)
 * src/
     * api/
     * app/
@@ -100,7 +100,7 @@ Folder System
 
 ### api/
     
-Here is the place to run main api
+Here is the place to run the main api
 
 ### app/
 
@@ -113,12 +113,12 @@ Here is the place for reSlim classes
 ### classes/middleware
 
 Add your middleware classes here
-We are using PDO MySQL for the Database
+We are using PDO Driver for the Database
 
 ### classes/modules
 
-reSlim modules for future update is always be put in here
-You can created your own custom modules classes here.
+reSlim modules for future update is always be putted here
+You are allowed to create your own custom modules classes here.
 
 ### classes/system
 
