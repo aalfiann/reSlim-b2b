@@ -26,7 +26,7 @@ $config['language'] = 'en';
 $config['db']['host']   = 'localhost';
 $config['db']['user']   = 'root';
 $config['db']['pass']   = 'root';
-$config['db']['dbname'] = 'reSlim';
+$config['db']['dbname'] = 'reSlim-b2b';
 
 /**
  * Configuration SMTP for Mailer
@@ -48,7 +48,7 @@ $config['smtp']['autotls'] = false;
 $config['smtp']['auth'] = true;
 $config['smtp']['secure'] = 'tls';
 $config['smtp']['port'] = 587;
-$config['smtp']['defaultnamefrom'] = 'reSlim admin';
+$config['smtp']['defaultnamefrom'] = 'reSlim B2B admin';
 $config['smtp']['username'] = 'youremail@gmail.com';
 $config['smtp']['password'] = 'secret';
 $config['smtp']['debug'] = 1;
