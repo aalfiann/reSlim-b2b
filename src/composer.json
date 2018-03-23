@@ -1,7 +1,7 @@
 {
     "name":"aalfiann/reSlim-b2b",
     "type":"framework",
-    "description":"Made application reSlim with use of powerful rest api",
+    "description":"Made application reSlim with use of powerful rest api. This is reSlim with extended feature for b2b.",
     "keywords":["microframework", "rest", "router", "PSR7", "PSR11"],
     "homepage":"https://github.com/aalfiann/reSlim-b2b",
     "license":"https://github.com/aalfiann/reSlim-b2b/blob/master/license.md MIT",
