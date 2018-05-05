@@ -96,6 +96,8 @@ Folder System
         * User.php (For user management)
         * Validation.php (For validation)
     * logs/
+        * app.log (Log data will stored in here)
+        * index.php (Default forbidden page)
     * routers/
 	    * name.router.php (routes by functionalities)
 * test/
