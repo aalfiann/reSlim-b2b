@@ -1,7 +1,7 @@
 reSlim-b2b
 =======
 [![Build](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
-[![Version](https://img.shields.io/badge/stable-2.7.5-green.svg)](https://github.com/aalfiann/reSlim-b2b)
+[![Version](https://img.shields.io/badge/stable-2.8.0-green.svg)](https://github.com/aalfiann/reSlim-b2b)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
 reSlim-b2b is Lightweight, Fast, Secure, Simple, Scalable and Powerful rest api.<br>
@@ -60,6 +60,7 @@ Folder System
         * event_delete_all_expired_auth_scheduler.sql (An expired token will auto deletion in 7 Days after expired date)
         * reSlim-b2b.sql (Structure database in reSlim-b2b to work with default test)
     * postman
+        * reSlim Dev Test.postman_collection.json (Is the file to run main api with PostMan)
         * reSlim Main.postman_collection.json (Is the file to run main api with PostMan)
         * reSlim System.postman_collection.json (Is the file to run b2b system api with PostMan)
     * template
@@ -71,6 +72,9 @@ Folder System
         * middleware/
             * ApiKey.php (For handling authentication api key)
             * index.php (Default forbidden page)
+            * ValidateParam.php (For handling validation in body form request)
+            * ValidateParamJSON.php (For handling validation in JSON request)
+            * ValidateParamURL.php (For handling validation in query parameter url)
         * modules
             * index.php (Default forbidden page)
             * Pages.php (For pages management)
@@ -137,9 +141,15 @@ You can add your custom log in your any container or router.
 
 Example adding custom log in a router
 ```php
-$app->post('/logger/test/new', function (Request $request, Response $response) {
-    echo 'This is a POST route';
-    $this->logger->addInfo("Response post is succesfully complete!!!");
+$app->post('/custom/log/new', function (Request $request, Response $response) {
+    $this->logger->addInfo(
+        '{"message":"Response post is succesfully complete!!!"}',
+        [
+            'type'=>'customlog',
+            'created_by'=>'yourname',
+            'IP'=>$this->visitorip
+        ]
+    );
 });
 ```
 
