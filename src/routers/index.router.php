@@ -2,6 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \classes\SimpleCache as SimpleCache;
+use \classes\JSON as JSON;
 
     // GET example api to show all data role
     $app->get('/', function (Request $request, Response $response) {
@@ -19,11 +20,10 @@ use \classes\SimpleCache as SimpleCache;
                     'github' => 'https://github.com/aalfian/reSlim',
                     'license' => 'https://github.com/aalfiann/reSlim/blob/master/license.md'
                 ],
-                'how_to_use' => 'reSlim is using authentication by token. So You have to register and login to get generated new token.',
-                'generate_time' => date('Y-m-d h:i:s a', time())
+                'how_to_use' => 'reSlim is using authentication by token. So You have to register and login to get generated new token.'
             ];
             $blacklistparam = ["&_=","&query=","&search=","token","apikey","api_key","time","timestamp","time_stamp","etag","key","q","s","k","t"];
-            $datajson = SimpleCache::save(json_encode($data, JSON_PRETTY_PRINT),null,$blacklistparam);
+            $datajson = SimpleCache::save(JSON::encode($data, true),null,$blacklistparam);
         }
         $body->write($datajson);
         return classes\Cors::modify($response,$body,200);
