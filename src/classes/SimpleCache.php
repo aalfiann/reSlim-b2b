@@ -220,7 +220,7 @@ namespace classes;
             }
             return $datajson;
         }
-
+        
         /**
          * Get total size of the cache folder
          * 
