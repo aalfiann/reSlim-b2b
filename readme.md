@@ -110,7 +110,7 @@ Here is the place to run the main api
 
 ### app/
 
-Here is the place for slim framework
+Here is the place for slim framework<br>
 We are using PDO Driver for the Database
 
 ### classes/
@@ -127,12 +127,12 @@ Here is the place to run b2b system classes
 
 ### classes/system/{your-app}
 
-You have to create new folder for your app project
+You have to create new folder for your app project<br>
 All of your company system classes should be put here.
 
 ### logs/
 
-Your custom log will be place in here as default.
+Your custom log will be place in here as default.<br>
 You can add your custom log in your any container or router.
 
 Example adding custom log in a router
@@ -153,7 +153,7 @@ $app->post('/custom/log/new', function (Request $request, Response $response) {
 
 You have to create new folder for each different module project.
 
-How to create new reSlim modules?
+How to create new reSlim modules?<br>
 Please look at this very simple project on Github.
 
 ### routers/
