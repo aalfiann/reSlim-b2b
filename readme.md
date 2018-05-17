@@ -158,8 +158,8 @@ Please look at this very simple project on [Github.com](https://github.com/aalfi
 
 ### routers/
 
-All the files with the routes. Each file contents the routes of an specific functionality.
-It is very important that the names of the files inside this folder follow this pattern: name.router.php
+All the files with the routes. Each file contents the routes of an specific functionality.<br>
+It is very important that the names of the files inside this folder follow this pattern: name.router.php<br>
 Don't created new folder of your router unless you have already modify this >> src/app/app.php.
 
 Example of router file:
