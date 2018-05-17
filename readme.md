@@ -1,7 +1,7 @@
 reSlim-b2b
 =======
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
-[![Version](https://img.shields.io/badge/stable-2.8.2-green.svg)](https://github.com/aalfiann/reSlim-b2b)
+[![Version](https://img.shields.io/badge/stable-2.9.0-green.svg)](https://github.com/aalfiann/reSlim-b2b)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
 reSlim-b2b is Lightweight, Fast, Secure, Simple, Scalable and Powerful rest api.<br>
@@ -75,9 +75,6 @@ Folder System
             * ValidateParam.php (For handling validation in body form request)
             * ValidateParamJSON.php (For handling validation in JSON request)
             * ValidateParamURL.php (For handling validation in query parameter url)
-        * modules
-            * index.php (Default forbidden page)
-            * Pages.php (For pages management)
         * system
             * Company.php (For company data management)
             * index.php (Default forbidden page)
@@ -98,6 +95,9 @@ Folder System
     * logs/
         * app.log (Log data will stored in here)
         * index.php (Default forbidden page)
+    * modules
+        * pages/ (Default module package for pages management)
+        * index.php (Default forbidden page)
     * routers/
 	    * name.router.php (routes by functionalities)
 * test/
@@ -111,6 +111,7 @@ Here is the place to run the main api
 ### app/
 
 Here is the place for slim framework
+We are using PDO Driver for the Database
 
 ### classes/
 
@@ -118,13 +119,7 @@ Here is the place for reSlim classes
 
 ### classes/middleware
 
-Add your middleware classes here
-We are using PDO Driver for the Database
-
-### classes/modules
-
-reSlim modules for future update is always be putted here
-You are allowed to create your own custom modules classes here.
+reSlim middleware classes are here
 
 ### classes/system
 
@@ -132,9 +127,8 @@ Here is the place to run b2b system classes
 
 ### classes/system/{your-app}
 
-You have to create new folder for your project app
+You have to create new folder for your app project
 All of your company system classes should be put here.
-
 
 ### logs/
 
@@ -154,6 +148,13 @@ $app->post('/custom/log/new', function (Request $request, Response $response) {
     );
 });
 ```
+
+### modules/{your-module}
+
+You have to create new folder for each different module project.
+
+How to create new reSlim modules?
+Please look at this very simple project on Github.
 
 ### routers/
 
