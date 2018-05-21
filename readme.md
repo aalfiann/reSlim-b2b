@@ -1,7 +1,7 @@
 reSlim-b2b
 =======
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
-[![Version](https://img.shields.io/badge/stable-2.9.1-green.svg)](https://github.com/aalfiann/reSlim-b2b)
+[![Version](https://img.shields.io/badge/stable-2.10.0-green.svg)](https://github.com/aalfiann/reSlim-b2b)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
 reSlim-b2b is Lightweight, Fast, Secure, Simple, Scalable and Powerful rest api.<br>
@@ -62,7 +62,7 @@ Folder System
     * postman
         * reSlim Dev Test.postman_collection.json (Is the file to run main api with PostMan)
         * reSlim Main.postman_collection.json (Is the file to run main api with PostMan)
-        * reSlim System.postman_collection.json (Is the file to run b2b system api with PostMan)
+        * reSlim Enterprise.postman_collection.json (Is the file to run b2b system api with PostMan)
     * template
         * readme.md (You can get original html template here)
 * src/
@@ -75,11 +75,6 @@ Folder System
             * ValidateParam.php (For handling validation in body form request)
             * ValidateParamJSON.php (For handling validation in JSON request)
             * ValidateParamURL.php (For handling validation in query parameter url)
-        * system
-            * Company.php (For company data management)
-            * index.php (Default forbidden page)
-            * User.php (For manage user in external system)
-            * Util.php (Utilities class to handle User into your company system)
         * Auth.php (For handling authentication)
         * BaseConverter.php (For encryption)
         * Cors.php (For accessing web resources)
@@ -96,6 +91,7 @@ Folder System
         * app.log (Log data will stored in here)
         * index.php (Default forbidden page)
     * modules
+        * enterprise/ (Default module package for b2b system)
         * pages/ (Default module package for pages management)
         * index.php (Default forbidden page)
     * routers/
@@ -120,15 +116,6 @@ Here is the place for reSlim classes
 ### classes/middleware
 
 reSlim middleware classes are here
-
-### classes/system
-
-Here is the place to run b2b system classes
-
-### classes/system/{your-app}
-
-You have to create new folder for your app project<br>
-All of your company system classes should be put here.
 
 ### logs/
 
