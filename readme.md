@@ -91,7 +91,9 @@ Folder System
         * app.log (Log data will stored in here)
         * index.php (Default forbidden page)
     * modules
+        * backup/ (Default module backup for database)
         * enterprise/ (Default module package for b2b system)
+        * packager/ (Default module package for app management)
         * pages/ (Default module package for pages management)
         * index.php (Default forbidden page)
     * routers/
