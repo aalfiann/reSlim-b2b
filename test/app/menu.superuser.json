@@ -76,6 +76,10 @@
                         {   
                             "title": "backup",
                             "link": "modul-backup-db.php"
+                        },
+                        {   
+                            "title": "packager",
+                            "link": "modul-packager.php"
                         }
                     ]
                 }
