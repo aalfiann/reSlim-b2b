@@ -1,8 +1,8 @@
 reSlim-b2b
 =======
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
-[![reSlim](https://img.shields.io/badge/reslim-1.10.1-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
-[![App](https://img.shields.io/badge/app-2.10.4-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
+[![reSlim](https://img.shields.io/badge/reslim-1.10.2-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
+[![App](https://img.shields.io/badge/app-2.10.5-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
 reSlim-b2b is Lightweight, Fast, Secure, Simple, Scalable and Powerful rest api.<br>
@@ -95,6 +95,7 @@ Folder System
     * modules
         * backup/ (Default module backup for database)
         * enterprise/ (Default module package for b2b system)
+        * flexibleconfig/ (Default module flexibleconfig for extend the app config)
         * packager/ (Default module package for app management)
         * pages/ (Default module package for pages management)
         * index.php (Default forbidden page)
