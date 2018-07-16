@@ -6,7 +6,7 @@
             $config['email'] = 'youremail@gmail.com'; //Your default email
             $config['basepath'] = 'http://localhost:1337/reSlim-b2b/test/app'; //Your folder website
             $config['homepath'] = 'http://localhost:1337/reSlim-b2b/test/app'; //Your folder frontend website
-            $config['assetspath'] = ''; //Your folder assets website
+            $config['assetspath'] = 'http://localhost:1337/reSlim-b2b/test/assets'; //Your folder assets website
             $config['api'] = 'http://localhost:1337/reSlim-b2b/src/api'; //Your folder rest api
             $config['apikey'] = ''; //Your api key, you can leave this blank and fill this later
             $config['disqus'] = ''; //Your disqus username, you can leave this blank and fill this later
