@@ -2,7 +2,7 @@ reSlim-b2b
 =======
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
 [![reSlim](https://img.shields.io/badge/reslim-1.11.0-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
-[![App](https://img.shields.io/badge/app-2.11.1-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
+[![App](https://img.shields.io/badge/app-2.11.3-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
 reSlim-b2b is Lightweight, Fast, Secure, Simple, Scalable and Powerful rest api.<br>
@@ -336,7 +336,9 @@ Note: Don't worry, this gui is already tested on our production environment.
 2. Edit the config.php inside folder "reSlim-b2b/test/app"<br>
     $config['title'] = 'your title website';<br>
     $config['email'] = 'your default email address';<br>
-    $config['basepath'] = 'url location of base path example';<br>
+    $config['basepath'] = 'url location of base path';<br>
+    $config['homepath'] = 'url location of home path';<br>
+    $config['assetspath'] = 'url location of assets path';<br>
     $config['api'] = 'url location of base path of api';<br>
     $config['apikey'] = 'your api key, you can leave this blank and fill this later';
 3. Visit yourserver/reSlim-b2b/test/app<br>
