@@ -275,7 +275,7 @@
 			"name": "Search Company As Pagination Public",
 			"request": {
 				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/enterprise/company/data/public/search/{page}/{itemperpage}/?apikey={yourapikey}&query={query to search data}",
+					"raw": "http://localhost:1337/reSlim-b2b/src/api/enterprise/company/data/public/search/{page}/{itemperpage}/?apikey={yourapikey}&query={query to search data}&lang=en",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -304,6 +304,12 @@
 						{
 							"key": "query",
 							"value": "{query to search data}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "lang",
+							"value": "en",
 							"equals": true,
 							"description": ""
 						}
