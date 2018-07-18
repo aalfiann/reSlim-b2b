@@ -143,19 +143,25 @@ Folder System
         * pages/ (Default module package for pages management)
         * index.php (Default forbidden page)
     * routers/
-	    * name.router.php (routes by functionalities)
+	    * index.php (Default forbidden page)
+        * index.router.php
+        * logs.router.php
+        * mail.router.php
+        * maintenance.router.php
+        * test.router.php (For tester only)
+        * user.router.php
 * test/
     * app/ (This is a GUI for test)
     * assets/ (This is an assets used in GUI)
 
 ### api/
     
-Here is the place to run the main api
+Here is the place to run your application as public place
 
 ### app/
 
-Here is the place for slim framework<br>
-We are using PDO Driver for the Database
+Here is the place for reslim framework<br>
+Connection database and other dependencies are here.
 
 ### classes/
 
