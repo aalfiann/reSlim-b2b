@@ -81,7 +81,7 @@ Getting Started
 4. Done
 
 ### III. Test
-1. Open your browser and visit >> http://localhost:1337/reslim/src/api/
+1. Open your browser and visit >> http://localhost:1337/reslim-b2b/src/api/
 
 Note: 
     - My apache server is run on port 1337.
@@ -95,6 +95,183 @@ Or learn directly from this very simple project on [Github.com](https://github.c
 1. Upload all files inside folder src to your server
 2. Backup local database and then restore to your server database online
 3. Done
+
+---
+Folder System
+---------------
+* resources
+    * database
+        * event_delete_all_expired_auth_scheduler.sql (An expired token will auto deletion in 7 Days after expired date)
+        * reSlim-b2b.sql (Structure database in reSlim-b2b to work with default test)
+    * postman
+        * reSlim Dev Test.postman_collection.json (Is the file to run main api with PostMan)
+        * reSlim Main.postman_collection.json (Is the file to run main api with PostMan)
+        * reSlim Enterprise.postman_collection.json (Is the file to run b2b system api with PostMan)
+    * template
+        * readme.md (You can get original html template here)
+* src/
+    * api/
+    * app/
+    * classes/
+        * middleware/
+            * ApiKey.php (For handling authentication api key)
+            * index.php (Default forbidden page)
+            * ValidateParam.php (For handling validation in body form request)
+            * ValidateParamJSON.php (For handling validation in JSON request)
+            * ValidateParamURL.php (For handling validation in query parameter url)
+        * Auth.php (For handling authentication)
+        * BaseConverter.php (For encryption)
+        * Cors.php (For accessing web resources)
+        * CustomHandlers.php (For handle message)
+        * index.php (Default forbidden page)
+        * JSON.php (Default handler JSON)
+        * Logs.php (For handle Log Server)
+        * Mailer.php (For sending mail)
+        * Pagination.php (For pagination json response)
+        * SimpleCache.php (For handle cache server side)
+        * Upload.php (For user upload and management file)
+        * User.php (For user management)
+        * Validation.php (For validation)
+    * logs/
+        * app.log (Log data will stored in here)
+        * index.php (Default forbidden page)
+    * modules
+        * backup/ (Default module backup for database)
+        * enterprise/ (Default module package for b2b system)
+        * flexibleconfig/ (Default module flexibleconfig for extend the app config)
+        * packager/ (Default module package for app management)
+        * pages/ (Default module package for pages management)
+        * index.php (Default forbidden page)
+    * routers/
+	    * name.router.php (routes by functionalities)
+* test/
+    * app/ (This is a GUI for test)
+    * assets/ (This is an assets used in GUI)
+
+### api/
+    
+Here is the place to run the main api
+
+### app/
+
+Here is the place for slim framework<br>
+We are using PDO Driver for the Database
+
+### classes/
+
+Here is the place for reSlim classes
+
+### classes/middleware
+
+reSlim middleware classes are here
+
+### logs/
+
+Your custom log will be place in here as default.<br>
+You can add your custom log in your any container or router.
+
+Example adding custom log in a router
+```php
+$app->post('/custom/log/new', function (Request $request, Response $response) {
+    $this->logger->addInfo(
+        '{"message":"Response post is succesfully complete!!!"}',
+        [
+            'type'=>'customlog',
+            'created_by'=>'yourname',
+            'IP'=>$this->visitorip
+        ]
+    );
+});
+```
+
+### modules/{your-module}
+
+You have to create new folder for each different module project.
+
+How to create new reSlim modules?<br>
+You can learn from documentation here >> [Tutorial Create Module](https://github.com/aalfiann/reSlim/wiki/Tutorial-Create-Module).  
+Or learn directly from this very simple project on [Github.com](https://github.com/aalfiann/reSlim-modules-first_mod).
+
+### routers/
+
+All the files with the routes. Each file contents the routes of an specific functionality.<br>
+It is very important that the names of the files inside this folder follow this pattern: name.router.php<br>
+Don't created new folder of your router unless you have already modify this >> src/app/app.php.
+
+Example of router file:
+
+user.router.php
+
+```php
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+use \classes\SimpleCache as SimpleCache;
+use \classes\User as User;
+use \classes\Cors as Cors;
+use \classes\middleware\ApiKey as ApiKey;
+
+    // POST example api to show all data user
+    $app->post('/user', function (Request $request, Response $response) {
+        $users = new User($this->db);
+        $datapost = $request->getParsedBody();
+        $users->Token = $datapost['Token'];
+        $body = $response->getBody();
+        $body->write($users->showAll());
+        return Cors::modify($response,$body,200);
+    });
+
+    // Multiple router method example api to show profile user (for public is need an api key)
+    $app->map(['GET','OPTIONS'],'/user/profile/{username}/', function (Request $request, Response $response) {
+        $users = new User($this->db);
+        $users->Username = $request->getAttribute('username');
+        $body = $response->getBody();
+        
+        // Use Http Cache Control and ETag
+        $response = $this->cache->withEtag($response, $this->etag30min.'-'.trim($_SERVER['REQUEST_URI'],'/'));
+        
+        // Working with server side cache.
+        if (SimpleCache::isCached(600,["apikey"])){
+            $datajson = SimpleCache::load(["apikey"]);
+        } else {
+            $datajson = SimpleCache::save($users->showUserPublic(),["apikey"]);
+        }
+        $body->write($datajson);
+        return Cors::modify($response,$body,200,$request);
+    })->add(new ApiKey());
+```
+
+
+Working with default example for testing (Postman)
+-----------------
+I recommend you to use PostMan an add ons in Google Chrome to get Started with test.
+
+1. Import reSlim-b2b.sql in your database then config your database connection in config.php inside folder **reslim-b2b/src/**
+2. Import file reSlim Main.postman_collection.json and reSlim Enterprise.postman_collection.json in your PostMan. This file is on resources/postman folder.
+3. Edit the path in PostMan. Because the example test is using my path server which is my server is run in http://localhost:1337 
+    The path to run reslim-b2b is inside folder api.<br> 
+    Example for my case is: http://localhost:1337/reslim-b2b/src/api/<br><br>
+    You don't have to do this if you change your php server port from 80 to 1337.    
+4. Then you can do the test by yourself
+
+Working with gui example for testing
+-----------------
+Note: Don't worry, this gui is already tested on our production environment.
+
+1. Import reSlim-b2b.sql in your database then config your database connection in config.php inside folder **reslim-b2b/src/**
+2. Edit the config.php inside folder "reslim-b2b/test/app"<br>
+    $config['title'] = 'your title website';<br>
+    $config['email'] = 'your default email address';<br>
+    $config['basepath'] = 'url location of base path';<br>
+    $config['homepath'] = 'url location of home path';<br>
+    $config['assetspath'] = 'url location of assets path';<br>
+    $config['api'] = 'url location of base path of api';<br>
+    $config['apikey'] = 'your api key, you can leave this blank and fill this later';
+3. Visit yourserver/reslim-b2b/test/app<br>
+    For my case is http://localhost:1337/reslim-b2b/test/app
+4. You can login with default superuser account:<br>
+    Username : reslim<br>
+    Password : reslim
+5. All is done
 
 ---
 Documentation
