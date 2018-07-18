@@ -253,7 +253,7 @@ I recommend you to use PostMan an add ons in Google Chrome to get Started with t
 
 1. Import reSlim-b2b.sql in your database then config your database connection in config.php inside folder **reslim-b2b/src/**
 2. Import file reSlim Main.postman_collection.json and reSlim Enterprise.postman_collection.json in your PostMan. This file is on resources/postman folder.
-3. Edit the path in PostMan. Because the example test is using my path server which is my server is run in http://localhost:1337 
+3. Edit the request path in PostMan. Because the example test is using my path server which is my server is run in http://localhost:1337 
     The path to run reslim-b2b is inside folder api.<br> 
     Example for my case is: http://localhost:1337/reslim-b2b/src/api/<br><br>
     You don't have to do this if you change your php server port from 80 to 1337.    
