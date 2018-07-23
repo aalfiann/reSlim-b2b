@@ -1,9 +1,9 @@
 {
 	"variables": [],
 	"info": {
-		"name": "reSlim Main",
-		"_postman_id": "e32164c5-a8f6-6f8b-c4a8-d83b02769aa0",
-		"description": "",
+		"name": "reSlim",
+		"_postman_id": "659e30a2-74dd-3013-e608-2c93c776d823",
+		"description": "API Dcoumentation about reSlim framework.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -19,16 +19,18 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Password",
 							"value": "{password}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-50 {case sensitive,required}"
 						}
 					]
 				},
-				"description": "Login User"
+				"description": "Login User\n---\n\nDefault Superuser Account:  \nUsername : reslim  \nPassword : reslim\n\nThen keep the token generated after login success.  \nToken will expired when you are logout or automatically expired after 7days as default.  "
 			},
 			"response": []
 		},
@@ -42,53 +44,137 @@
 					"mode": "formdata",
 					"formdata": [
 						{
+							"key": "Token",
+							"value": "your token",
+							"description": "Length is 1-250 {required}",
+							"type": "text"
+						},
+						{
 							"key": "Username",
 							"value": "your username (no space)",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Password",
 							"value": "your password",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {case sensitive,required}"
 						},
 						{
 							"key": "Fullname",
 							"value": "your name",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50"
 						},
 						{
 							"key": "Address",
 							"value": "your address here...",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "Phone",
 							"value": "your phone",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-15 {numeric}"
 						},
 						{
 							"key": "Email",
 							"value": "your email",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-50 {email}"
 						},
 						{
 							"key": "Aboutme",
 							"value": "about you",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "Avatar",
 							"value": "your url avatar",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250 {url}"
 						},
 						{
 							"key": "Role",
-							"value": "2",
-							"type": "text"
+							"value": "5",
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						}
 					]
 				},
-				"description": "Register user"
+				"description": "Register user\n---\n\nDefault list Role:\n- 1: Superuser\n- 2: Admin\n- 3. Member\n- 4. Developer\n- 5. Applicant"
+			},
+			"response": []
+		},
+		{
+			"name": "User Register Safely",
+			"request": {
+				"url": "http://localhost:1337/reSlim-b2b/src/api/user/register/public",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Username",
+							"value": "your username (no space)",
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
+						},
+						{
+							"key": "Password",
+							"value": "your password",
+							"type": "text",
+							"description": "Length is 1-250 {case sensitive,required}"
+						},
+						{
+							"key": "Fullname",
+							"value": "your name",
+							"type": "text",
+							"description": "Length is 1-50"
+						},
+						{
+							"key": "Address",
+							"value": "your address here...",
+							"type": "text",
+							"description": "Length is 0-250"
+						},
+						{
+							"key": "Phone",
+							"value": "your phone",
+							"type": "text",
+							"description": "Length is 0-15 {numeric}"
+						},
+						{
+							"key": "Email",
+							"value": "your email",
+							"type": "text",
+							"description": "Length is 0-50 {email}"
+						},
+						{
+							"key": "Aboutme",
+							"value": "about you",
+							"type": "text",
+							"description": "Length is 0-250"
+						},
+						{
+							"key": "Avatar",
+							"value": "your url avatar",
+							"type": "text",
+							"description": "Length is 0-250 {url}"
+						},
+						{
+							"key": "Role",
+							"value": "5",
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
+						}
+					]
+				},
+				"description": "Register user safely\n---\nSafely means this will prevent user register as superuser or admin\n\nDefault list Role are allowed:\n- 3. Member\n- 4. Developer\n- 5. Applicant"
 			},
 			"response": []
 		},
@@ -104,16 +190,18 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": "Logout user  "
+				"description": "Logout user\n---\n\nIf you already logout, the current active token will be expired automatically."
 			},
 			"response": []
 		},
@@ -124,7 +212,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Show All User"
+				"description": "Show All User\n---\nThis will showing all data of the user.  \nOnly for user with Role Superuser and Admin.\n\n\nNote:\n---\n- There is no pagination and search\n- Don't use this if you have big user more than 1000 users."
 			},
 			"response": []
 		},
@@ -140,50 +228,23 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": "Show All User"
+				"description": "Show All User\n---\nThis will showing all data of the user.  \nOnly for user with Role Superuser and Admin.\n\n\nNote:\n---\n- There is no pagination and search\n- Don't use this if you have big user more than 1000 users."
 			},
 			"response": []
 		},
 		{
 			"name": "Search Data User",
 			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/user/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"user",
-						"data",
-						"search",
-						"{page}",
-						"{itemsperpage}",
-						"{yourtoken}",
-						""
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "{your query to search data}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
+				"url": "http://localhost:1337/reSlim-b2b/src/api/user/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Search Data User\n---\nThis will showing all data of the user with pagination.  \nOnly for user with Role Superuser and Admin."
 			},
 			"response": []
 		},
@@ -194,18 +255,18 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Show Role User"
+				"description": "Show Role User\n---\nWill showing the role for spesific user  \nThis will work only for user with role superuser"
 			},
 			"response": []
 		},
 		{
-			"name": "Show Status User",
+			"name": "Show Option Status User",
 			"request": {
 				"url": "http://localhost:1337/reSlim-b2b/src/api/user/status/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Show Status User"
+				"description": "Show Option Status User\n---\nTo get data list status to be use for manage the user"
 			},
 			"response": []
 		},
@@ -221,56 +282,66 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Fullname",
 							"value": "your name",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-50"
 						},
 						{
 							"key": "Address",
 							"value": "your address",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "Phone",
 							"value": "your phone",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-15 {numeric}"
 						},
 						{
 							"key": "Email",
 							"value": "your email",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-50 {email}"
 						},
 						{
 							"key": "Aboutme",
 							"value": "about your",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "Avatar",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250 {url}"
 						},
 						{
 							"key": "Role",
 							"value": "2",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						},
 						{
 							"key": "Status",
 							"value": "1",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": "User Update"
+				"description": "User Update\n---\nThis is for update the data of the user.  \nWorks for any role type"
 			},
 			"response": []
 		},
@@ -286,16 +357,18 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": "User Delete"
+				"description": "User Delete\n---\nTo delete the user.  \nWorks for user with role superuser."
 			},
 			"response": []
 		},
@@ -311,26 +384,30 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Password",
 							"value": "{youroldpassword}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {case sensitive,required}"
 						},
 						{
 							"key": "NewPassword",
 							"value": "{yournewpassword}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {case sensitive,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Change Password User\n---\nTo force change or reset the user (self) password.  \n\nNote:\n---\n- This is commonly use if the user want to change his password from profile page."
 			},
 			"response": []
 		},
@@ -346,21 +423,24 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "NewPassword",
 							"value": "{password}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {case sensitive,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": "Change Password User"
+				"description": "Reset Password User\n---\nTo force change or reset the user password.  \n\nNote:\n---\n- This works for any role type\n- Make sure only superuser and admin have this access."
 			},
 			"response": []
 		},
@@ -375,7 +455,7 @@
 					],
 					"port": "1337",
 					"path": [
-						"reSlim-b2b",
+						"reSlim",
 						"src",
 						"api",
 						"user",
@@ -402,7 +482,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Show Profile User"
+				"description": "Show Profile User\n---\nTo show the user data for public access with apikey"
 			},
 			"response": []
 		},
@@ -413,7 +493,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Show Profile User\n---\nTo show the user data for internal access with token.\n\nNote:\n---\n- Only user with role superuser can see the suspended user."
 			},
 			"response": []
 		},
@@ -424,7 +504,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Show All User Pagination"
+				"description": "Show All User Pagination\n---\nThis will show all data user with pagination.  \nWorks only for user with role superuser and admin"
 			},
 			"response": []
 		},
@@ -435,7 +515,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Verify Token"
+				"description": "Verify Token\n---\nThis will verify the token status active or not"
 			},
 			"response": []
 		},
@@ -446,7 +526,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Verify Username\n---\nThis is to check is username has already registered or not.\n\nNote:\n---\n- This is commonly use to check if username already taken or not for registration"
 			},
 			"response": []
 		},
@@ -457,7 +537,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Verify Email\n---\nThis is to check is email address has already taken or not.\n\nNote:\n---\n- This is commonly use to check if email address already taken or not for registration or update the user profile"
 			},
 			"response": []
 		},
@@ -468,7 +548,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": "Get User Role by Token"
+				"description": "Get User Role by Token\n---\nTo get RoleID of user by token.\n\nNote:\n---\n- This commonly use to open or route some page which is need spesific role to access it."
 			},
 			"response": []
 		},
@@ -484,78 +564,53 @@
 						{
 							"key": "Title",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Alternate",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "External",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Datafile",
+							"value": "",
 							"type": "file",
-							"src": "join-tkd-express.jpg",
-							"value": ""
+							"description": ""
 						}
 					]
 				},
-				"description": ""
+				"description": "User Upload\n---\n\nUser upload will works only with use form method post.  "
 			},
 			"response": []
 		},
 		{
 			"name": "Search Data User Upload",
 			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/user/{username}/upload/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"user",
-						"{username}",
-						"upload",
-						"data",
-						"search",
-						"{page}",
-						"{itemsperpage}",
-						"{yourtoken}",
-						""
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "{your query to search data}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
+				"url": "http://localhost:1337/reSlim-b2b/src/api/user/{username}/upload/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Search Data User Upload\n---\nTo show all data of the all user uploaded.\n\nNote:\n---\n- Data upload of self user will appear (private or public)\n- Data upload of other user will appear only if status is set to public"
 			},
 			"response": []
 		},
@@ -566,22 +621,22 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Show All Data User Upload\n---\nWill show all data of user (self) upload with pagination.  \nSearch is no available in this."
 			},
 			"response": []
 		},
 		{
-			"name": "Show User Upload Item",
+			"name": "Show User Upload Item Public",
 			"request": {
 				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/user/{username}/upload/data/item/{itemid}/?apikey={yourapikeys}",
+					"raw": "http://localhost:1337/reSlim-b2b/src/api/user/{username}/upload/data/item/{itemid}/?apikey={yourapikeys}&lang=en",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1337",
 					"path": [
-						"reSlim-b2b",
+						"reSlim",
 						"src",
 						"api",
 						"user",
@@ -598,6 +653,12 @@
 							"value": "{yourapikeys}",
 							"equals": true,
 							"description": ""
+						},
+						{
+							"key": "lang",
+							"value": "en",
+							"equals": true,
+							"description": ""
 						}
 					],
 					"variable": []
@@ -605,7 +666,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Show User Upload Item Public\n---\nTo show upload data item of user for public access."
 			},
 			"response": []
 		},
@@ -621,41 +682,48 @@
 						{
 							"key": "ItemID",
 							"value": "{itemid}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						},
 						{
 							"key": "Title",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Alternate",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "External",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 0-250"
 						},
 						{
 							"key": "Status",
 							"value": "{49 or 50}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						},
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Update User Upload\n---\nTo update the data item uploaded.\n\nNote:\n---\n- Only user with role Superuser and Admin have access to update item uploaded all user for moderation purpose."
 			},
 			"response": []
 		},
@@ -671,32 +739,35 @@
 						{
 							"key": "ItemID",
 							"value": "{itemid}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						},
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Delete User Upload\n---\nTo delete the item uploaded of user\nWorks only for user with role Superuser."
 			},
 			"response": []
 		},
 		{
-			"name": "Show Data Status Upload",
+			"name": "Show Option Status Upload",
 			"request": {
 				"url": "http://localhost:1337/reSlim-b2b/src/api/user/upload/status/{youtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Show Data Status Upload\n---\nTo get data list status to be use for manage the data upload."
 			},
 			"response": []
 		},
@@ -707,7 +778,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Force Download Link\n---\nForce download stream inline or attachment to protect from hotlinking."
 			},
 			"response": []
 		},
@@ -723,32 +794,38 @@
 						{
 							"key": "To",
 							"value": "{destination email address}",
-							"type": "text"
+							"type": "text",
+							"description": "{required}"
 						},
 						{
 							"key": "Subject",
 							"value": "{subject email}",
-							"type": "text"
+							"type": "text",
+							"description": "{required}"
 						},
 						{
 							"key": "Message",
 							"value": "{message of email}",
-							"type": "text"
+							"type": "text",
+							"description": "{required}"
 						},
 						{
 							"key": "Html",
 							"value": "{true or false}",
-							"type": "text"
+							"type": "text",
+							"description": "{required}"
 						},
 						{
 							"key": "From",
 							"value": "{your email address}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 6-50 {email,required}"
 						},
 						{
 							"key": "FromName",
 							"value": "{your name or website name}",
-							"type": "text"
+							"type": "text",
+							"description": ""
 						},
 						{
 							"key": "CC",
@@ -767,7 +844,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": "Send Mail\n---\nTo sending email directly.\n\nNote:\n- This is required smtp configuration in reslim config.php"
 			},
 			"response": []
 		},
@@ -783,11 +860,12 @@
 						{
 							"key": "Email",
 							"value": "{youremail}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 6-50 {email,required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "User Forgot Password\n---\nTo send verification reset password via email if user forgot password.\n\nNote:\n- This is required smtp configuration in reslim config.php"
 			},
 			"response": []
 		},
@@ -803,16 +881,18 @@
 						{
 							"key": "PassKey",
 							"value": "{yourpasskey}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "NewPassword",
 							"value": "{yournewpassword}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {case sensitive,required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Verify Pass Key\n---\nTo verify if the pass key generated to reset password is correct or expired.\n\nNote:\n---\n- Pass Key will automatically expired in 3days."
 			},
 			"response": []
 		},
@@ -828,21 +908,24 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "Domain",
 							"value": "{yourdomain.com}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {domain,required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Create API Key\n---\nThis is to create an Api Key.  \nApi Key is needed to access the our api for public access purpose.\n\nNote:  \n- Domain should be full path. Ex. http://yourdomain.com\n- If domain wrong, then you will get problem with Cors."
 			},
 			"response": []
 		},
@@ -858,26 +941,30 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "ApiKey",
 							"value": "{yourapikey}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Status",
 							"value": "{1 or 42}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-11 {numeric,required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Update API Key\n---\nThis is to update the Api Key.\n\nNote:\n- This will only update the status only.\n- Domain and Api Key value can't to update."
 			},
 			"response": []
 		},
@@ -893,62 +980,35 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						},
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}"
 						},
 						{
 							"key": "ApiKey",
 							"value": "{yourapikey}",
-							"type": "text"
+							"type": "text",
+							"description": "Length is 1-250 {required}"
 						}
 					]
 				},
-				"description": ""
+				"description": "Delete API Key\n---\nThis is to delete the Api Key\n\nNote:\n- Only user that is own the Api Key, can to delete."
 			},
 			"response": []
 		},
 		{
 			"name": "Search Data API Keys User",
 			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/user/{username}/keys/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"user",
-						"{username}",
-						"keys",
-						"data",
-						"search",
-						"{page}",
-						"{itemsperpage}",
-						"{yourtoken}",
-						""
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "{your query to search data}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
+				"url": "http://localhost:1337/reSlim-b2b/src/api/user/{username}/keys/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Search Data API Keys User\n---\nThis will show all data Api Key created by user.\n\nNote:\n---\n- Only user with role Superuser can see all data Api Key of other user."
 			},
 			"response": []
 		},
@@ -964,30 +1024,30 @@
 						{
 							"key": "Code",
 							"value": "{ID for error}",
-							"description": "required|alphanumeric",
+							"description": "Length is 1-20 {alphanumeric,required}",
 							"type": "text"
 						},
 						{
 							"key": "Name",
 							"value": "{yourname}",
-							"description": "required",
+							"description": "Length is 1-50 {required}",
 							"type": "text"
 						},
 						{
 							"key": "Email",
 							"value": "{youremail}",
-							"description": "required",
+							"description": "Length is 1-50 {email,required}",
 							"type": "text"
 						},
 						{
 							"key": "Message",
 							"value": "{message to log}",
-							"description": "required",
+							"description": "Length is 1-250 {required}",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"description": "Append Logs\n---\nTo send any log\n\nNote:\n- This is commonly use if the frontend has conflict with the api server then frontend send bugs report to server log.\n- No any role required"
 			},
 			"response": []
 		},
@@ -1003,13 +1063,13 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"description": "",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
 							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"description": "",
+							"description": "Length is 1-250 {required}",
 							"type": "text"
 						},
 						{
@@ -1020,7 +1080,7 @@
 						}
 					]
 				},
-				"description": ""
+				"description": "Update Logs\n---\nTo update the log content.\n\nNote:\n---\n- This is commonly use to edit or clear the content of log. \n- No any role required"
 			},
 			"response": []
 		},
@@ -1031,636 +1091,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Create New Page",
-			"request": {
-				"url": "http://localhost:1337/reSlim-b2b/src/api/page/data/new",
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "{username}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "{yourtoken}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Title",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Image",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Description",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Content",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Tags",
-							"value": "",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Update Page",
-			"request": {
-				"url": "http://localhost:1337/reSlim-b2b/src/api/page/data/update",
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "{yourusername}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "{yourtoken}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Title",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Image",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Description",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Content",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Tags",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "PageID",
-							"value": "{pageid}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "StatusID",
-							"value": "{51 or 52}",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Update Draft Page",
-			"request": {
-				"url": "http://localhost:1337/reSlim-b2b/src/api/page/data/update",
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "{yourusername}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "{yourtoken}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Title",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Image",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Description",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Content",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Tags",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "PageID",
-							"value": "{pageid}",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Page",
-			"request": {
-				"url": "http://localhost:1337/reSlim-b2b/src/api/page/data/delete",
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Username",
-							"value": "{yourusername}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "Token",
-							"value": "{yourtoken}",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "PageID",
-							"value": "{pageid}",
-							"description": "",
-							"type": "text"
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Search Page Pagination",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/search/{yourusername}/{yourtoken}/{page}/{itemsperpage}/?query={query to search}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"search",
-						"{yourusername}",
-						"{yourtoken}",
-						"{page}",
-						"{itemsperpage}",
-						""
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "{query to search}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Search Page Pagination Public",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/public/search/{page}/{itemsperpage}/?apikey={yourapikey}&query={query to search}&lang=en",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"public",
-						"search",
-						"{page}",
-						"{itemsperpage}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "query",
-							"value": "{query to search}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "lang",
-							"value": "en",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Update View Page",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/view/{pageid}/?apikey={yourapikey}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"view",
-						"{pageid}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Show Publish Page Pagination Public",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/public/published/{page}/{itemsperpage}/?apikey={yourapikey}&lang=en",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"public",
-						"published",
-						"{page}",
-						"{itemsperpage}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "lang",
-							"value": "en",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Show Publish Page Sort Pagination Public",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/public/published/{page}/{itemsperpage}/{sort asc|desc}/?apikey={yourapikey}&lang=en",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"public",
-						"published",
-						"{page}",
-						"{itemsperpage}",
-						"{sort asc|desc}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "lang",
-							"value": "en",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Show Single Page Public",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/public/read/{pageid}/?apikey={yourapikey}&lang=en",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"public",
-						"read",
-						"{pageid}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "lang",
-							"value": "en",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Show Single Page",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/public/read/{pageid}/?apikey={yourapikey}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"public",
-						"read",
-						"{pageid}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Show Page Written By",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/written/{yourusername}/{yourtoken}/{user}/{page}/{itemsperpage}/{sort asc|desc}/?query={query to search}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"written",
-						"{yourusername}",
-						"{yourtoken}",
-						"{user}",
-						"{page}",
-						"{itemsperpage}",
-						"{sort asc|desc}",
-						""
-					],
-					"query": [
-						{
-							"key": "query",
-							"value": "{query to search}",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": null
-			},
-			"response": []
-		},
-		{
-			"name": "Show Page Written By Public",
-			"request": {
-				"url": {
-					"raw": "http://localhost:1337/reSlim-b2b/src/api/page/data/written/public/{user}/{page}/{itemsperpage}/{sort asc|desc}/?apikey={yourapikey}&query={query to search}&lang=en",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"reSlim-b2b",
-						"src",
-						"api",
-						"page",
-						"data",
-						"written",
-						"public",
-						"{user}",
-						"{page}",
-						"{itemsperpage}",
-						"{sort asc|desc}",
-						""
-					],
-					"query": [
-						{
-							"key": "apikey",
-							"value": "{yourapikey}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "query",
-							"value": "{query to search}",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "lang",
-							"value": "en",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Show Status Page",
-			"request": {
-				"url": "http://localhost:1337/reSlim-b2b/src/api/page/data/status/{yourtoken}",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
+				"description": "Clear Logs\n---\nThis is to clear the content of log.\n\nNote:\n- No any role required."
 			},
 			"response": []
 		},
@@ -1671,7 +1102,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Get User Data Token\n---\nThis is to get user data token.\n\nNote:\n- This is commonly use for manage the generated token of user."
 			},
 			"response": []
 		},
@@ -1687,24 +1118,24 @@
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"description": "",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
 							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{youractivetoken}",
-							"description": "",
+							"description": "Length is 1-250 {required}",
 							"type": "text"
 						},
 						{
 							"key": "TokenToDelete",
 							"value": "{yourtokentodelete}",
-							"description": "",
+							"description": "Length is 1-250 {required}",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"description": "Delete Single Token\n---\nThis is to delete single token of user (self).\n\nNote:\n---\n- User can revoke the single token anytime."
 			},
 			"response": []
 		},
@@ -1720,18 +1151,18 @@
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"description": "",
+							"description": "Length is 1-50 {alphanumeric,lowercase,required}",
 							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"description": "",
+							"description": "Length is 1-250 {required}",
 							"type": "text"
 						}
 					]
 				},
-				"description": ""
+				"description": "Delete All Token except active one\n---\nThis is to delete all token except the current active one.\n\nNote:\n---\n- If all token has been deleted, then all other device will automatically logout except the current active one."
 			},
 			"response": []
 		},
@@ -1742,7 +1173,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Delete All Cache API Keys\n---\nThis is to delete all cache generated from api key request."
 			},
 			"response": []
 		},
@@ -1753,7 +1184,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Delete All Cache Data\n---\nThis is to delete all cache generated from output response json.\n\nNote:\n- This will affect only some router with using SimpleCache class."
 			},
 			"response": []
 		},
@@ -1764,7 +1195,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Data User\n---\nThis is to show summary of the Data User."
 			},
 			"response": []
 		},
@@ -1775,7 +1206,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Data API\n---\nThis is to show summary of the Data API."
 			},
 			"response": []
 		},
@@ -1786,7 +1217,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Data Upload\n---\nThis is to show summary of the Data Upload."
 			},
 			"response": []
 		},
@@ -1797,7 +1228,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Data Page\n---\nThis is to show summary of the Data Page."
 			},
 			"response": []
 		},
@@ -1808,7 +1239,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Chart Data Page\n---\nThis is to show summary of the Data Page.\n\nNote:\n---\n- Format json was set to support using chartist.js as default."
 			},
 			"response": []
 		},
@@ -1819,7 +1250,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Chart Data User\n---\nThis is to show summary of the Data User.\n\nNote:\n---\n- Format json was set to support using chartist.js as default."
 			},
 			"response": []
 		},
@@ -1830,7 +1261,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Chart Data Upload\n---\nThis is to show summary of the Data Upload.\n\nNote:\n---\n- Format json was set to support using chartist.js as default."
 			},
 			"response": []
 		},
@@ -1841,7 +1272,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": "Stats Chart Data API\n---\nThis is to show summary of the Data API.\n\nNote:\n---\n- Format json was set to support using chartist.js as default."
 			},
 			"response": []
 		}
