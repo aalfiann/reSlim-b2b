@@ -66,7 +66,7 @@ Getting Started
 5. Done
 
 ### II. Connection Database
-1. Create Database name reslim-b2b in your MySQL/MariaDB
+1. Create Database name **reslim-b2b** in your MySQL/MariaDB
 2. Execute or restore **reSlim-b2b.sql** which is located at **resources/database/** folder
 3. Edit **config.php** which is located at **src/** folder  
     Just only this part,
