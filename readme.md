@@ -74,7 +74,7 @@ Getting Started
     $config['db']['host']   = 'localhost';
     $config['db']['user']   = 'root';
     $config['db']['pass']   = 'root';
-    $config['db']['dbname'] = 'reSlim';
+    $config['db']['dbname'] = 'reSlim-b2b';
     ```
     You can set the rest config later
 
@@ -251,10 +251,10 @@ Working with default example for testing (Postman)
 -----------------
 I recommend you to use PostMan an add ons in Google Chrome to get Started with test.
 
-1. Import reSlim-b2b.sql in your database then config your database connection in config.php inside folder **reslim-b2b/src/**
-2. Import file reSlim Main.postman_collection.json and reSlim Enterprise.postman_collection.json in your PostMan. This file is on resources/postman folder.
+1. Import **reSlim-b2b.sql** in your database then config your database connection in **config.php** inside folder **reslim-b2b/src/**
+2. Import file **reSlim Main.postman_collection.json** and **reSlim Enterprise.postman_collection.json** in your PostMan. This file is on **resources/postman** folder.
 3. Edit the request path in PostMan. Because the example test is using my path server which is my server is run in http://localhost:1337 
-    The path to run reslim-b2b is inside folder api.<br> 
+    The path to run **reslim-b2b** is inside folder api.<br> 
     Example for my case is: http://localhost:1337/reslim-b2b/src/api/<br><br>
     You don't have to do this if you change your php server port from 80 to 1337.    
 4. Then you can do the test by yourself
@@ -274,8 +274,8 @@ Note: Don't worry, this gui is already tested on our production environment.
     $config['apikey'] = 'your api key, you can leave this blank and fill this later';
 3. Visit yourserver/reslim-b2b/test/app<br>
     For my case is http://localhost:1337/reslim-b2b/test/app
-4. You can login with default superuser account:<br>
-    Username : reslim<br>
+4. You can login with default superuser account:  
+    Username : reslim  
     Password : reslim
 5. All is done
 
