@@ -86,6 +86,12 @@
                             "link": "modul-flexible-config.php"
                         }
                     ]
+                },
+                {
+                    "id":"6",
+                    "title":"contact",
+                    "link": "modul-contact.php",
+                    "icon_class":"mdi mdi-email"
                 }
             ]
         },
