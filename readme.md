@@ -1,7 +1,7 @@
 reSlim-b2b
 =======
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
-[![reSlim](https://img.shields.io/badge/reslim-1.17.0-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
+[![reSlim](https://img.shields.io/badge/reslim-1.17.1-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
 [![App](https://img.shields.io/badge/app-2.17.1-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
