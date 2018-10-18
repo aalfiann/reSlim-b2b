@@ -45,7 +45,7 @@ System Requirements
 2. MySQL 5.6 or MariaDB
 3. Web server with URL rewriting
 4. Web server with mcrypt extension
-5. Apache Server (Better to use Apache + Reverse Proxy NGINX)
+5. Apache or NGINX Server
 
 
 ---
