@@ -126,6 +126,7 @@ Folder System
         * CustomHandlers.php (For handle message)
         * index.php (Default forbidden page)
         * JSON.php (Default handler JSON)
+        * LazyPDO.php (For create database connection)
         * Logs.php (For handle Log Server)
         * Mailer.php (For sending mail)
         * Pagination.php (For pagination json response)
