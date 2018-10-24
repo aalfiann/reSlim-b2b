@@ -1,8 +1,8 @@
 reSlim-b2b
 =======
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-b2b)
-[![reSlim](https://img.shields.io/badge/reslim-1.19.0-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
-[![App](https://img.shields.io/badge/app-2.19.0-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
+[![reSlim](https://img.shields.io/badge/reslim-1.20.0-green.svg)](https://github.com/aalfiann/reSlim-b2b/src)
+[![App](https://img.shields.io/badge/app-2.20.0-green.svg)](https://github.com/aalfiann/reSlim-b2b/test/app)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-b2b/blob/master/license.md)
 
 reSlim-b2b is Lightweight, Fast, Secure, Simple, Scalable, Flexible and Powerful rest api.<br>
