@@ -368,6 +368,17 @@
 			"response": []
 		},
 		{
+			"name": "Show Data Company Detail",
+			"request": {
+				"url": "http://localhost:1337/reSlim-b2b/src/api/enterprise/company/data/company/detail/{yourusername}/{yourtoken}/{branchid}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Show Data Company Detail\r\n---\r\nThis will show data company for detail\r\n  \r\nNote:\r\n- All role can see this data company"
+			},
+			"response": []
+		},
+		{
 			"name": "Show Option Company",
 			"request": {
 				"url": "http://localhost:1337/reSlim-b2b/src/api/enterprise/company/data/company/{username}/{yourtoken}",
